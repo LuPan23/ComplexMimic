@@ -94,7 +94,7 @@ data/
 ```
 
 ## 🗂️ Pretrained models
-The pretrained models are available at [[Link]](https://drive.google.com/drive/folders/12C2FBem8PKhzi25s5PAw-i_0O_X5HFum?usp=sharing). You can download the corresponding pretrained models and place them under the `output/HumanoidIm` directory as follows:
+The pretrained models are available at [[Link]](https://drive.google.com/drive/folders/12C2FBem8PKhzi25s5PAw-i_0O_X5HFum?usp=sharing). You can download the corresponding pretrained models and place them under the `output/HumanoidIm` directory.
 
 ```text
 output/
