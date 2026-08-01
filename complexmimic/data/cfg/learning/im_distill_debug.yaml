@@ -1,0 +1,150 @@
+params:
+  seed: 0
+
+  algo:
+    name: student
+
+  model:
+    name: trans
+
+  network:
+    name: trans 
+    separate: True
+
+    space:
+      continuous:
+        mu_activation: None
+        sigma_activation: None
+        mu_init:
+          name: default
+        sigma_init:
+          name: const_initializer
+          val: -2.9
+        fixed_sigma: True
+        learn_sigma: False
+
+    mlp:
+      units: [2048, 1536, 1024, 1024, 512, 512] # comparable paramter to z_big_task
+      activation: silu
+      d2rl: False
+      initializer:
+        name: default
+      regularizer:
+        name: None
+
+    disc:
+      units: [1024, 512]
+      activation: relu
+      initializer:
+        name: default
+
+  load_checkpoint: False
+
+  
+
+  # ====================== PPO  ======================
+  config:
+    name: Humanoid
+    env_name: rlgpu
+    multi_gpu: False
+    ppo: True
+    mixed_precision: False
+    normalize_input: True
+    normalize_value: True
+    reward_shaper:
+      scale_value: 1
+    normalize_advantage: True
+    gamma: 0.99
+    tau: 0.95
+    learning_rate: 2e-6
+    kd_rate: 2e-5
+    critic_lr: 1e-4
+    lr_schedule: constant
+    score_to_win: 20000
+    max_epochs: 10000000
+    save_best_after: 100
+    save_frequency: 1500
+    print_stats: False
+    save_intermediate: True
+    entropy_coef: 0.0
+    truncate_grads: True
+    grad_norm: 50.0
+    e_clip: 0.2
+    horizon_length: 32
+    minibatch_size: 256
+    mini_epochs: 6
+    critic_coef: 5
+    clip_value: False
+    
+    bounds_loss_coef: 10
+    amp_obs_demo_buffer_size: 32
+    amp_replay_buffer_size: 32
+    amp_replay_keep_prob: 0.01
+    amp_batch_size: 32
+    amp_minibatch_size: 32
+    disc_coef: 0
+    disc_logit_reg: 0.00
+    disc_grad_penalty: 0
+    disc_reward_scale: 0
+    disc_weight_decay: 0.0001
+    normalize_amp_input: True
+
+    task_reward_w: 1.0
+    disc_reward_w: 0.0
+
+    # ====================== KD ======================
+    use_kd: True
+    kd_coef: 1.0
+    kd_only: False    
+    use_dagger: True
+    distill_only_epochs: 1500
+    kd_coef_after_rl: 1.0
+    dagger_start_epoch: 0 
+    dagger_hold_epochs: 500 
+    dagger_end_epoch: 1500
+    rl_start_epoch: 2501
+    hm_dim: 400
+    teacher_zero_hm: [false, true] 
+
+    teacher_checkpoints:
+      - "./output/HumanoidIm/imitation_expert/Humanoid_00015000.pth"
+      - "./output/HumanoidIm/interaction_expert/Humanoid_00015000.pth"
+
+    teacher_ids: [scene-free,scene-aware]
+
+    player: 
+        games_num: 50000000
+
+    teacher_network:
+      name: amp      
+      separate: True
+
+      space:
+        continuous:
+          mu_activation: None
+          sigma_activation: None
+          mu_init:
+            name: default
+          sigma_init:
+            name: const_initializer
+            val: -2.9
+          fixed_sigma: True
+          learn_sigma: False
+
+      mlp:
+        units: [2048, 1536, 1024, 1024, 512, 512]
+        activation: silu
+        d2rl: False
+        initializer:
+          name: default
+        regularizer:
+          name: None
+
+      disc:
+        units: [1024, 512]
+        activation: relu
+        initializer:
+          name: default
+
+
+

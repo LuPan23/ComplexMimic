@@ -1,0 +1,25 @@
+
+# 排除日志文件
+logs/
+
+
+# 排除工作空间
+workspace/
+
+# Python特定排除
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.pytest_cache/
+
+# 环境变量
+.env
+.venv
+venv/
+
+# IDE配置
+.vscode/
+.idea/
+*.swp
+*.swo
