@@ -62,13 +62,7 @@ Preprocessed datasets are provided as follows:
 - **TRUMANS**: [[link]](https://drive.google.com/drive/folders/1r9MTEYF1X8EDEt6IIzUKIapO1np07dbO?usp=sharing)
 - **LINGO**: [[link]](https://drive.google.com/drive/folders/1MDXof_8ItWrgar7D0yaL4ww7LVIn-TBb?usp=sharing)
 
-Due to the GIMO dataset license, the preprocessed GIMO data cannot be redistributed. Please obtain the original GIMO dataset from the [official repository](https://github.com/y-zheng18/GIMO) and generate the required files using the provided preprocessing scripts.
-
-The data processing scripts are located in:
-
-```text
-./data_process
-```
+Due to the GIMO dataset license, the preprocessed GIMO data cannot be redistributed. Please obtain the original GIMO dataset from the [official repository](https://github.com/y-zheng18/GIMO) and generate the required files using the provided preprocessing scripts in `./data_process/gimo`. 
 
 The datasets should be organized as follows:
 
