@@ -10,12 +10,18 @@
 
 </div>
 
+## 🔗 Introduction
+
+
+
+**ComplexMimic** is the first framework to systematically study physics-based human-scene interaction imitation under realistic and complex scene constraints, where motion faithfulness and interaction feasibility involve an inherent trade-off. It adopts a two-stage design: a **Dual-Flow Strategy** first trains complementary imitation and interaction experts, and **Difficulty-Aware Distillation** then transfers their respective capabilities into a unified policy. For more details, please refer to the [original paper](https://arxiv.org/abs/2607.02034).
+
 
 ## 🛠️ Dependencies
 
-To create the environment, follow the following instructions: 
+Follow the instructions below to set up the environment.
 
-1. Create new conda environment and install pytroch:
+1. Create a new Conda environment and install PyTorch:
 
 
 ```
@@ -24,11 +30,15 @@ conda install pytorch torchvision torchaudio pytorch-cuda=11.6 -c pytorch -c nvi
 pip install -r requirements.txt
 ```
 
-2. Download and setup [Isaac Gym](https://developer.nvidia.com/isaac-gym). 
+2. Download and set up [Isaac Gym](https://developer.nvidia.com/isaac-gym). 
 
-3. Install [SMPLSim](https://github.com/ZhengyiLuo/SMPLSim) to automatically create the SMPL humanoid. Please run `pip install git+https://github.com/ZhengyiLuo/SMPLSim.git@master` to SMPLSim.
+3. Install [SMPLSim](https://github.com/ZhengyiLuo/SMPLSim) to automatically create the SMPL humanoid:
 
-4. Download SMPL paramters from [[link]](https://drive.google.com/drive/folders/1MgO5L89rbhL9n_qI-Wp_oX7boOt2jaxc?usp=sharing) . Put them in the `data/smpl` folder, unzip them into 'data/smpl' folder. 
+```
+pip install git+https://github.com/ZhengyiLuo/SMPLSim.git@master
+```
+
+4. Download SMPL parameters from [[link]](https://drive.google.com/drive/folders/1MgO5L89rbhL9n_qI-Wp_oX7boOt2jaxc?usp=sharing). Put them in the `data/smpl` folder.
 
 ```
 |-- data
@@ -46,9 +56,8 @@ Preprocessed datasets are provided as follows:
 
 - **TRUMANS**: [[link]](https://drive.google.com/drive/folders/1r9MTEYF1X8EDEt6IIzUKIapO1np07dbO?usp=sharing)
 - **LINGO**: [[link]](https://drive.google.com/drive/folders/1MDXof_8ItWrgar7D0yaL4ww7LVIn-TBb?usp=sharing)
-- **GIMO**: [[link]](https://github.com/y-zheng18/GIMO)
 
-Due to the dataset license, the preprocessed GIMO data cannot be redistributed. Please obtain the original GIMO dataset from the [official repository](https://github.com/y-zheng18/GIMO) and generate the required files using the provided preprocessing scripts.
+Due to the GIMO dataset license, the preprocessed GIMO data cannot be redistributed. Please obtain the original GIMO dataset from the [official repository](https://github.com/y-zheng18/GIMO) and generate the required files using the provided preprocessing scripts.
 
 The data processing scripts are located in:
 
@@ -78,7 +87,7 @@ data/
     └── gimo_inference.json
 ```
 
-## Pretrained models
+## 🗂️ Pretrained models
 The pretrained models are available at [[Link]](https://drive.google.com/drive/folders/12C2FBem8PKhzi25s5PAw-i_0O_X5HFum?usp=sharing). You can download the corresponding pretrained models and place them under the `output/HumanoidIm` directory as follows:
 
 ```
@@ -89,7 +98,7 @@ The pretrained models are available at [[Link]](https://drive.google.com/drive/f
         |-- interaction_expert
 ```
 
-## 🔍 Test
+## 🔍 Evaluation
 You can directly test the performance of the pre-trained model as follows
 1. Test the teacher model
 
@@ -108,7 +117,7 @@ bash complexmimic/scripts/inference_general_policy_gimo.sh
 ```
 
 
-## 🚀 Train
+## 🚀 Training
 1. Download TRUMANS datasets and set the following structure
 
 ```
@@ -116,9 +125,9 @@ bash complexmimic/scripts/inference_general_policy_gimo.sh
     |-- TRUMANS
         |-- trumans_scene_mesh
         |-- trumans_motion_train.pkl
-        |-- trumans_motion_scene_mapping_train.json
-        |-- trumans_motion_scene_mapping_general_policy_train.json
-        |-- trumans_motion_scene_mapping_inference.json
+        |-- trumans_train.json
+        |-- trumans_general_policy_train.json
+        |-- trumans_inference.json
 ```
 
 2. Train the teacher model
@@ -140,18 +149,15 @@ Our implementation is based on [PHC](https://github.com/ZhengyiLuo/PHC) and [Int
 
 ## 📄 Citation
 
-
-If you find this work useful, please cite our publication:
-
-L. Pan and H. Zhao, “ComplexMimic: Human-Scene Interaction Imitation in Complex 3D Environments,” in *European Conference on Computer Vision (ECCV)*, 2026.
+If you find this repo useful for your research, please consider citing:
 
 BibTeX:
 
 ```bibtex
-@inproceedings{pan2026complexmimic,
-  title     = {ComplexMimic: Human-Scene Interaction Imitation in Complex 3D Environments},
-  author    = {Lu Pan and Hongwei Zhao},
-  booktitle = {European Conference on Computer Vision (ECCV)},
-  year      = {2026}
+@article{pan2026complexmimic,
+  title   = {ComplexMimic: Human-Scene Interaction Imitation in Complex 3D Environments},
+  author  = {Lu Pan and Hongwei Zhao},
+  journal = {arXiv preprint arXiv:2607.02034},
+  year    = {2026}
 }
 ```
