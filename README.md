@@ -105,7 +105,7 @@ output/
 ```
 
 ## 🔍 Evaluation
-You can directly test the performance of the pre-trained model as follows
+You can directly test the performance of the pre-trained model as follows:
 1. Test the teacher model
 
 ```bash
