@@ -10,8 +10,8 @@ mkdir -p "$log_dir"
 echo "[INFO] Starting interaction expert training..."
 echo "[INFO] Log file: $log_file"
 
-CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
 
+export CUDA_VISIBLE_DEVICES=0
 python -u ./complexmimic/run_teacher.py \
     learning=im_debug \
     exp_name=${exp_name} \

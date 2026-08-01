@@ -10,8 +10,7 @@ mkdir -p "$log_dir"
 echo "[INFO] Starting testing..."
 echo "[INFO] Log file: $log_file"
 
-CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
-
+export CUDA_VISIBLE_DEVICES=0
 python -u ./complexmimic/run_student.py \
     learning=im_distill_debug \
     exp_name=${exp_name} \

@@ -164,7 +164,6 @@ class RLGPUEnv(vecenv.IVecEnv):
         return
 
     def step(self, action):
-        # print("warning!!! action is not implemented!!! /home/bygpu/anaconda3/envs/isaac/lib/python3.8/site-packages/rl_games/common/a2c_common.py")
         next_obs, reward, is_done, info = self.env.step(action)
         # todo: improve, return only dictinary
         self.full_state["obs"] = next_obs

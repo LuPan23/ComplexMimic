@@ -10,7 +10,7 @@ mkdir -p "$log_dir"
 echo "[INFO] Starting testing..."
 echo "[INFO] Log file: $log_file"
 
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=0
 python -u ./complexmimic/run_teacher.py\
     learning=im_interaction_expert \
     exp_name=${exp_name} \
