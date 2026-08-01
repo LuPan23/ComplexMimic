@@ -22,4 +22,4 @@ python -u ./complexmimic/run_student.py \
     collect_dataset=True \
     2>&1 | tee "$log_file"
 
-echo "[INFO] Training finished"
+echo "[INFO] Evaluation finished"
