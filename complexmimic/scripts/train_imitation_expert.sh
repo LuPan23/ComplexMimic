@@ -16,7 +16,6 @@ python -u ./complexmimic/run_teacher.py \
     exp_name=${exp_name} \
     env=env_train_imitation_expert \
     headless=True \
-    epoch=-1 \
     2>&1 | tee "$log_file"
 
 echo "[INFO] Training finished"

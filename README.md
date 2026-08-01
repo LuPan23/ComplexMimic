@@ -45,12 +45,12 @@ pip install git+https://github.com/ZhengyiLuo/SMPLSim.git@master
 
 4. Download SMPL parameters from [[link]](https://drive.google.com/drive/folders/1MgO5L89rbhL9n_qI-Wp_oX7boOt2jaxc?usp=sharing). Put them in the `data/smpl` folder.
 
-```
-|-- data
-    |-- smpl
-        |-- SMPL_FEMALE.pkl
-        |-- SMPL_NEUTRAL.pkl
-        |-- SMPL_MALE.pkl
+```text
+data/
+└── smpl/
+    ├── SMPL_FEMALE.pkl
+    ├── SMPL_NEUTRAL.pkl
+    └── SMPL_MALE.pkl
 ```
 
 
@@ -77,6 +77,7 @@ data/
 ├── TRUMANS/
 │   ├── trumans_scene_mesh/
 │   ├── trumans_motion_train.pkl
+│   ├── trumans_motion_inference.pkl
 │   ├── trumans_train.json
 │   ├── trumans_general_policy_train.json
 │   └── trumans_inference.json
@@ -95,12 +96,12 @@ data/
 ## 🗂️ Pretrained models
 The pretrained models are available at [[Link]](https://drive.google.com/drive/folders/12C2FBem8PKhzi25s5PAw-i_0O_X5HFum?usp=sharing). You can download the corresponding pretrained models and place them under the `output/HumanoidIm` directory as follows:
 
-```
-|-- output
-    |-- HumanoidIm
-        |-- general_policy
-        |-- imitation_expert
-        |-- interaction_expert
+```text
+output/
+└── HumanoidIm/
+    ├── general_policy/
+    ├── imitation_expert/
+    └── interaction_expert/
 ```
 
 ## 🔍 Evaluation
@@ -130,6 +131,7 @@ bash complexmimic/scripts/inference_general_policy_gimo.sh
     |-- TRUMANS
         |-- trumans_scene_mesh
         |-- trumans_motion_train.pkl
+        |-- trumans_motion_inference.pkl
         |-- trumans_train.json
         |-- trumans_general_policy_train.json
         |-- trumans_inference.json

@@ -16,7 +16,6 @@ python -u ./complexmimic/run_student.py \
     exp_name=${exp_name} \
     env=env_train_general_policy \
     headless=True \
-    epoch=4500 \
     2>&1 | tee "$log_file"
 
 echo "[INFO] Training finished"
