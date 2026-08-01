@@ -126,15 +126,15 @@ bash complexmimic/scripts/inference_general_policy_gimo.sh
 ## 🚀 Training
 1. Download TRUMANS datasets and set the following structure
 
-```
-|-- data
-    |-- TRUMANS
-        |-- trumans_scene_mesh
-        |-- trumans_motion_train.pkl
-        |-- trumans_motion_inference.pkl
-        |-- trumans_train.json
-        |-- trumans_general_policy_train.json
-        |-- trumans_inference.json
+```text
+data/
+└── TRUMANS/
+    ├── trumans_scene_mesh/
+    ├── trumans_motion_train.pkl
+    ├── trumans_motion_inference.pkl
+    ├── trumans_train.json
+    ├── trumans_general_policy_train.json
+    └── trumans_inference.json
 ```
 
 2. Train the teacher model
