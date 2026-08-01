@@ -1,0 +1,8 @@
+# 忽略 assets 下的所有内容
+*
+
+# 保留 .gitignore 自身
+!.gitignore
+
+# 只保留 teaser 图片
+!complexmimic.png

@@ -16,6 +16,11 @@
 
 **ComplexMimic** is the first framework to systematically study physics-based human-scene interaction imitation under realistic and complex scene constraints, where motion faithfulness and interaction feasibility involve an inherent trade-off. It adopts a two-stage design: a **Dual-Flow Strategy** first trains complementary imitation and interaction experts, and **Difficulty-Aware Distillation** then transfers their respective capabilities into a unified policy. For more details, please refer to the [original paper](https://arxiv.org/abs/2607.02034).
 
+<p align="center">
+  <a href="./assets/complexmimic.png">
+    <img src="./assets/complexmimic.png" width="80%">
+  </a>
+</p>
 
 ## 🛠️ Dependencies
 
