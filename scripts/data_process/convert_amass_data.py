@@ -1,8 +1,6 @@
 import glob
 import os
 import sys
-import pdb
-import os.path as osp
 sys.path.append(os.getcwd())
 
 import torch 
@@ -11,8 +9,7 @@ import numpy as np
 import joblib
 from tqdm import tqdm
 import argparse
-import cv2
-from poselib.poselib.skeleton.skeleton3d import SkeletonTree, SkeletonMotion, SkeletonState
+from poselib.poselib.skeleton.skeleton3d import SkeletonTree, SkeletonState
 from smpl_sim.smpllib.smpl_joint_names import SMPL_MUJOCO_NAMES, SMPL_BONE_ORDER_NAMES
 from smpl_sim.smpllib.smpl_local_robot import SMPL_Robot as LocalRobot
 
@@ -20,9 +17,10 @@ from smpl_sim.smpllib.smpl_local_robot import SMPL_Robot as LocalRobot
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--debug", action="store_true", default=False)
-    parser.add_argument("--path", type=str, default="")
+    parser.add_argument("--path", type=str, default="./data/amass/0721")
     parser.add_argument("--process_split", type=str, default="train")
     parser.add_argument("--upright_start", action="store_true", default=False)
+    parser.add_argument("--save_path", type=str, default=False)
     args = parser.parse_args()
     
     process_split = args.process_split
@@ -48,12 +46,18 @@ if __name__ == "__main__":
             "model": "smpl",
         }
 
-    smpl_local_robot = LocalRobot(robot_cfg,)
-    if not osp.isdir(args.path):
-        print("Please specify AMASS data path")
-        import ipdb; ipdb.set_trace()
+    smpl_local_robot = LocalRobot(
+        robot_cfg,
+        data_dir="./data/smpl",
+    )
+    # if not osp.isdir(args.path):
+    #     print("Please specify AMASS data path")
+    #     import ipdb; ipdb.set_trace()
         
-    all_pkls = glob.glob(f"{args.path}/**/*.npz", recursive=True)
+    if os.path.isfile(args.path) and args.path.endswith(".npz"):
+        all_pkls = [args.path]
+    else:
+        all_pkls = glob.glob(f"{args.path}/**/*.npz", recursive=True)
     amass_occlusion = joblib.load("sample_data/amass_copycat_occlusion_v3.pkl")
     amass_full_motion_dict = {}
     amass_splits = {
@@ -65,11 +69,10 @@ if __name__ == "__main__":
     length_acc = []
     for data_path in tqdm(all_pkls):
         bound = 0
-        splits = data_path.split("/")[7:]
-        key_name_dump = "0-" + "_".join(splits).replace(".npz", "")
         
-        if (not splits[0] in process_set):
-            continue
+        splits = os.path.basename(data_path)          # '20_person_2.npz'
+        name_no_ext = os.path.splitext(splits)[0]     # '20_person_2'
+        key_name_dump =  name_no_ext    
         
         if key_name_dump in amass_occlusion:
             issue = amass_occlusion[key_name_dump]["issue"]
@@ -84,7 +87,7 @@ if __name__ == "__main__":
             
         entry_data = dict(np.load(open(data_path, "rb"), allow_pickle=True))
         
-        if not 'mocap_framerate' in  entry_data:
+        if 'mocap_framerate' not in entry_data:
             continue
         framerate = entry_data['mocap_framerate']
 
@@ -148,8 +151,8 @@ if __name__ == "__main__":
 
         amass_full_motion_dict[key_name_dump] = new_motion_out
         
-    import ipdb; ipdb.set_trace()
+    # import ipdb; ipdb.set_trace()
     if upright_start:
-        joblib.dump(amass_full_motion_dict, "data/amass/amass_train_take6_upright.pkl", compress=True)
+        joblib.dump(amass_full_motion_dict, args.save_path, compress=True)
     else:
         joblib.dump(amass_full_motion_dict, "data/amass/amass_train_take6.pkl", compress=True)
