@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🤖 [ECCV 2026] ComplexMimic: Human-Scene Interaction Imitation in Complex 3D Environments
+# 🤖 ComplexMimic: Human-Scene Interaction Imitation in Complex 3D Environments
 
 
 [![arXiv](https://img.shields.io/badge/arXiv-2607.02034-b31b1b.svg)](https://arxiv.org/abs/2607.02034)
