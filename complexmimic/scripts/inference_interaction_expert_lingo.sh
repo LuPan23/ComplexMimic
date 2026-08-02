@@ -3,7 +3,7 @@ set -e
 timestamp=$(date +"%Y-%m-%d_%H-%M")
 exp_name="interaction_expert"
 log_dir="./logs"
-log_file="${log_dir}/inference_${exp_name}_trumans_${timestamp}.log"
+log_file="${log_dir}/inference_${exp_name}_lingo_${timestamp}.log"
 
 mkdir -p "$log_dir"
 
